@@ -26,7 +26,7 @@ func main() {
 	http.HandleFunc("/"+path, index)
 
 	// 启动web服务，监听9090端口
-	log.Infoln(fmt.Sprintf("server start port:%s , path:%s , token:%s", port, path, token))
+	log.Infoln(fmt.Sprintf("server start port:%s , path:%s ", port, path))
 
 	err := http.ListenAndServe(":"+port, nil)
 	if err != nil {
