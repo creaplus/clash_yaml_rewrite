@@ -75,6 +75,19 @@ func conversionYaml() []byte {
 	proxys = append(proxys, config.Proxies...)
 	config.Proxies = proxys
 
+	//追加到组
+	groups := make([]ProxyGroup, 0)
+	for _, group := range config.ProxyGroups {
+		tmpNames := make([]string, 0)
+		for _, p := range *proxy {
+			tmpNames = append(tmpNames, p.Name)
+		}
+		tmpNames = append(tmpNames, group.Proxies...)
+		group.Proxies = tmpNames
+
+		groups = append(groups, group)
+	}
+	config.ProxyGroups = groups
 	out, _ := yaml.Marshal(config)
 	return out
 }
@@ -157,9 +170,15 @@ type Proxy struct {
 	Server     string     `yaml:"server"`
 	Port       int64      `yaml:"port"`
 	Cipher     string     `yaml:"cipher"`
-	Password   string     `yaml:"password"`
-	Plugin     string     `yaml:"plugin"`
-	PluginOpts PluginOpts `yaml:"plugin-opts"`
+	Password   string     `yaml:"password,omitempty"`
+	Uuid       string     `yaml:"uuid,omitempty"`
+	AlterId    int64      `yaml:"alterId"`
+	UDP        bool       `yaml:"udp,omitempty"`
+	Tls        bool       `yaml:"tls,omitempty"`
+	Network    string     `yaml:"network,omitempty"`
+	WsPath     string     `yaml:"ws-path,omitempty"`
+	Plugin     string     `yaml:"plugin,omitempty"`
+	PluginOpts PluginOpts `yaml:"plugin-opts,omitempty"`
 }
 
 type PluginOpts struct {
