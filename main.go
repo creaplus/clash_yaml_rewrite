@@ -15,7 +15,6 @@ func main() {
 	// using standard library "flag" package
 	port := *flag.String("port", "8080", "default  8080")
 	path := *flag.String("path", "rewrite", "default  rewrite")
-	token := *flag.String("token", "nbjvdhes", "default nbjvdhes")
 
 	viper.SetConfigName("config") // name of config file (without extension)
 	viper.SetConfigType("yaml")   // REQUIRED if the config file does not have the extension in the name
