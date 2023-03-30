@@ -1,5 +1,5 @@
-url: https://xxxx/
-token: nbjvdhes
+url: https://xxxx/ #原始连接
+token: nbjvdhes #访问接口token
 proxy:
 - name: 搬瓦工
   type: ss
