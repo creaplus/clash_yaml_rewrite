@@ -1,0 +1,13 @@
+url: https://xxxx/
+token: nbjvdhes
+proxy:
+- name: 搬瓦工
+  type: ss
+  server: xxx
+  port: 000
+  cipher: xxxxx
+  password: xxx
+  plugin: obfs
+  plugin-opts:
+    mode: http
+    host: 34923-kR4t5s7B1w.download.microsoft.com
