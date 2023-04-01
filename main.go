@@ -21,6 +21,8 @@ func main() {
 	viper.AddConfigPath("./")
 	viper.ReadInConfig()
 
+	viper.WatchConfig()
+
 	// 设置路由，如果访问/，则调用index方法
 	http.HandleFunc("/"+path, index)
 
