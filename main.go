@@ -65,12 +65,13 @@ func conversionYaml() []byte {
 	yaml.Unmarshal(all, config)
 
 	stringMap := viper.Get("proxy")
-	sliceProxy, err := ToSliceProxy(stringMap)
-	log.Infoln(sliceProxy)
+	//sliceProxy, err := ToSliceProxy(stringMap)
+	//log.Infoln(sliceProxy)
 	//.GetStringMap("proxy")
 	marshal, _ := json.Marshal(stringMap)
 	proxy := new([]Proxy)
-	yaml.Unmarshal(marshal, proxy)
+	json.Unmarshal(marshal, proxy)
+	//yaml.Unmarshal(marshal, proxy)
 
 	proxys := make([]Proxy, 0)
 	proxys = append(proxys, *proxy...)
@@ -167,22 +168,22 @@ type Profile struct {
 }
 
 type Proxy struct {
-	Name           string                 `yaml:"name"`
-	Type           string                 `yaml:"type"`
-	Server         string                 `yaml:"server"`
-	Port           int64                  `yaml:"port"`
-	Cipher         string                 `yaml:"cipher"`
-	Password       string                 `yaml:"password,omitempty"`
-	Uuid           string                 `yaml:"uuid,omitempty"`
-	AlterId        string                 `yaml:"alterId,omitempty"`
-	UDP            bool                   `yaml:"udp,omitempty"`
-	Tls            bool                   `yaml:"tls,omitempty"`
-	SkipCertVerify bool                   `yaml:"skip-cert-verify,omitempty"`
-	Network        string                 `yaml:"network,omitempty"`
-	WsPath         string                 `yaml:"ws-path,omitempty"`
-	Plugin         string                 `yaml:"plugin,omitempty"`
-	PluginOpts     map[string]interface{} `yaml:"plugin-opts,omitempty"`
-	H2Opts         map[string]interface{} `yaml:"h2-opts,omitempty"`
+	Name           string                 `yaml:"name" json:"name"`
+	Type           string                 `yaml:"type" json:"type"`
+	Server         string                 `yaml:"server" json:"server"`
+	Port           int64                  `yaml:"port" json:"port"`
+	Cipher         string                 `yaml:"cipher" json:"cipher"`
+	Password       string                 `yaml:"password,omitempty" json:"password"`
+	Uuid           string                 `yaml:"uuid,omitempty" json:"uuid"`
+	AlterId        int                    `yaml:"alterId,omitempty" json:"alterid"`
+	UDP            bool                   `yaml:"udp,omitempty" json:"udp"`
+	Tls            bool                   `yaml:"tls,omitempty" json:"tls"`
+	SkipCertVerify bool                   `yaml:"skip-cert-verify,omitempty" json:"skip-cert-verify"`
+	Network        string                 `yaml:"network,omitempty" json:"network"`
+	WsPath         string                 `yaml:"ws-path,omitempty" json:"ws-path"`
+	Plugin         string                 `yaml:"plugin,omitempty" json:"plugin"`
+	PluginOpts     map[string]interface{} `yaml:"plugin-opts,omitempty" json:"plugin-opts"`
+	H2Opts         map[string]interface{} `yaml:"h2-opts,omitempty" json:"h2-opts"`
 }
 
 type ProxyGroup struct {
