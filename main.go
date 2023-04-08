@@ -167,20 +167,22 @@ type Profile struct {
 }
 
 type Proxy struct {
-	Name       string                 `yaml:"name"`
-	Type       string                 `yaml:"type"`
-	Server     string                 `yaml:"server"`
-	Port       int64                  `yaml:"port"`
-	Cipher     string                 `yaml:"cipher"`
-	Password   string                 `yaml:"password,omitempty"`
-	Uuid       string                 `yaml:"uuid,omitempty"`
-	AlterId    string                 `yaml:"alterId,omitempty"`
-	UDP        bool                   `yaml:"udp,omitempty"`
-	Tls        bool                   `yaml:"tls,omitempty"`
-	Network    string                 `yaml:"network,omitempty"`
-	WsPath     string                 `yaml:"ws-path,omitempty"`
-	Plugin     string                 `yaml:"plugin,omitempty"`
-	PluginOpts map[string]interface{} `yaml:"plugin-opts,omitempty"`
+	Name           string                 `yaml:"name"`
+	Type           string                 `yaml:"type"`
+	Server         string                 `yaml:"server"`
+	Port           int64                  `yaml:"port"`
+	Cipher         string                 `yaml:"cipher"`
+	Password       string                 `yaml:"password,omitempty"`
+	Uuid           string                 `yaml:"uuid,omitempty"`
+	AlterId        string                 `yaml:"alterId,omitempty"`
+	UDP            bool                   `yaml:"udp,omitempty"`
+	Tls            bool                   `yaml:"tls,omitempty"`
+	SkipCertVerify bool                   `yaml:"skip-cert-verify,omitempty"`
+	Network        string                 `yaml:"network,omitempty"`
+	WsPath         string                 `yaml:"ws-path,omitempty"`
+	Plugin         string                 `yaml:"plugin,omitempty"`
+	PluginOpts     map[string]interface{} `yaml:"plugin-opts,omitempty"`
+	H2Opts         map[string]interface{} `yaml:"h2-opts,omitempty"`
 }
 
 type ProxyGroup struct {
