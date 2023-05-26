@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
+	"github.com/Dreamacro/clash/config"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"gopkg.in/yaml.v3"
@@ -32,6 +33,8 @@ func main() {
 		log.Fatal("ListenAndServe: ", err)
 	}
 
+	config.Init()
+	//ParseProxy
 }
 
 // w表示response对象，返回给客户端的内容都在对象里处理
