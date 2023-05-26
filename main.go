@@ -33,8 +33,6 @@ func main() {
 		log.Fatal("ListenAndServe: ", err)
 	}
 
-	config.Init()
-	//ParseProxy
 }
 
 // w表示response对象，返回给客户端的内容都在对象里处理
@@ -61,6 +59,11 @@ func conversionYaml() []byte {
 	}
 	all, err := io.ReadAll(resp.Body)
 	//log.Println(string(all))
+	originClashYaml, err := config.Parse(all)
+	log.Print(originClashYaml)
+	//TODO
+	//ParseProxy
+	//adapter.ParseProxy()
 
 	config := new(ClashX)
 	yaml.Unmarshal(all, config)
